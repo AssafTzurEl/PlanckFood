@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Food {
 
-    Long id;
-    String name;
-    Type type;
-    Integer rating;
+    private Long id;
+    private String name;
+    private Type type;
+    private Integer rating;
 
     public enum Type {
         APPETIZER,
