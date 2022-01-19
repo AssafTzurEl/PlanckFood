@@ -41,7 +41,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/v1/food/filter?type=DRINK",
+					"raw": "http://localhost:8080/api/v1/food/filter?type=HOT_DRINK",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -56,7 +56,7 @@
 					"query": [
 						{
 							"key": "type",
-							"value": "DRINK"
+							"value": "HOT_DRINK"
 						}
 					]
 				}
@@ -96,11 +96,11 @@
 		{
 			"name": "Update",
 			"request": {
-				"method": "PUT",
+				"method": "PATCH",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\" : \"18\",\r\n    \"rating\" : \"2\"\r\n}",
+					"raw": "{\r\n    \"id\" : \"1\",\r\n    \"rating\" : \"2\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
