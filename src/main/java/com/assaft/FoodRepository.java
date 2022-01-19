@@ -8,5 +8,5 @@ public interface FoodRepository {
     Optional<Food> getById(Long id);
     List<Food> findByType(Food.Type type);
     Food save(Food food);
-    Food updateRatingById(Long id, Integer rating);
+    Optional<Food> updateRatingById(Long id, Integer rating);
 }

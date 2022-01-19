@@ -39,14 +39,14 @@ public class InMemoryFoodRepository implements FoodRepository {
     }
 
     @Override
-    public Food updateRatingById(Long id, Integer rating) {
+    public Optional<Food> updateRatingById(Long id, Integer rating) {
         Food food = db.get(id);
 
         if (food != null) {
             food.setRating(rating);
         }
 
-        return food;
+        return Optional.ofNullable(food);
     }
 
     private final Map<Long, Food> db = new HashMap<>();
