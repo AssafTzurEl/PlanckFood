@@ -12,3 +12,11 @@ Use the following branches:
 - Food repository interface
 - In-memory repository implementation
 - Food controller linked to repository
+
+## phase-3
+- HTTP errors implemented using exceptions
+
+## phase-4
+- Food service interface and implementation
+- All business logic code from the controller moved to the service class
+- Food controller linked to service, service linked to repository
