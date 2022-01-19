@@ -17,7 +17,7 @@ public class FoodController {
 
     @GetMapping()
     public List<Food> getAll() {
-        return new ArrayList<Food>();
+        return new ArrayList<>();
     }
 
     @GetMapping("/{id}")
@@ -27,7 +27,7 @@ public class FoodController {
 
     @GetMapping("/filter")
     public List<Food> getByType(@RequestParam(name = "type") Food.Type type) {
-        return new ArrayList<Food>();
+        return new ArrayList<>();
     }
 
     @PostMapping()
@@ -42,7 +42,8 @@ public class FoodController {
                 String.format("%s/%d", BASE_PATH, newFoodId))).body(food);
     }
 
-    @PutMapping()
+    // Demonstrating CQRS, not necessarily the best way to update an object!
+    @PatchMapping()
     public ResponseEntity<Food> updateFood(@RequestBody FoodUpdate foodUpdate) {
 
         // Mock update:
