@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,11 +24,19 @@ public class FoodController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Food> getById(@PathVariable Long id) {
+    public Food getById(@PathVariable Long id) {
+
+        if (id < 0L) {
+            throw new IllegalArgumentException("Invalid food ID: " + id);
+        }
 
         Optional<Food> food = repository.getById(id);
 
-        return food.isPresent() ? ResponseEntity.ok(food.get()) : ResponseEntity.notFound().build();
+        if (!food.isPresent()) {
+            throw new NotFoundException(id);
+        }
+
+        return food.get();
     }
 
     @GetMapping("/filter")
@@ -48,11 +55,18 @@ public class FoodController {
 
     // Demonstrating CQRS, not necessarily the best way to update an object!
     @PatchMapping()
-    public ResponseEntity<Food> updateFood(@RequestBody FoodUpdate foodUpdate) {
+    public Food updateFood(@RequestBody FoodUpdate foodUpdate) {
+
+        if (foodUpdate.getId() < 0L) {
+            throw new IllegalArgumentException("Invalid food ID: " + foodUpdate.getId());
+        }
 
         Optional<Food> updatedFood = repository.updateRatingById(foodUpdate.getId(), foodUpdate.getRating());
 
-        return updatedFood.isPresent() ? ResponseEntity.ok(updatedFood.get()) : ResponseEntity.notFound().build();
+        if (!updatedFood.isPresent()) {
+            throw new NotFoundException(foodUpdate.getId());
+        }
+        return updatedFood.get();
     }
 
     private final FoodRepository repository;
