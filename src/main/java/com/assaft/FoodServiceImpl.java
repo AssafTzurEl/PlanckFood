@@ -57,5 +57,19 @@ public class FoodServiceImpl implements FoodService {
         return updatedFood.get();
     }
 
+    @Override
+    public void removeById(Long id) {
+        if (repository.getById(id).isPresent()) {
+            repository.deleteById(id);
+        } else {
+            throw new NotFoundException(id);
+        }
+    }
+
+    @Override
+    public void removeAll() {
+        repository.deleteAll();
+    }
+
     private final FoodRepository repository;
 }

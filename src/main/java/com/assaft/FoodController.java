@@ -46,5 +46,15 @@ public class FoodController {
         return service.updateRatingById(foodUpdate);
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Long id) {
+        service.removeById(id);
+    }
+
+    @DeleteMapping()
+    public void deleteAll() {
+        service.removeAll();
+    }
+
     private final FoodService service;
 }

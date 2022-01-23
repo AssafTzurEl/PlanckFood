@@ -8,4 +8,6 @@ public interface FoodService {
     List<Food> findByType(Food.Type type);
     Food add(Food food);
     Food updateRatingById(FoodUpdate foodUpdate);
+    void removeById(Long id);
+    void removeAll();
 }

@@ -49,5 +49,15 @@ public class InMemoryFoodRepository implements FoodRepository {
         return Optional.ofNullable(food);
     }
 
+    @Override
+    public void deleteById(Long id) {
+        db.remove(id);
+    }
+
+    @Override
+    public void deleteAll() {
+        db.clear();
+    }
+
     private final Map<Long, Food> db = new HashMap<>();
 }

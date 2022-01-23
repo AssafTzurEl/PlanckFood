@@ -9,4 +9,6 @@ public interface FoodRepository {
     List<Food> findByType(Food.Type type);
     Food save(Food food);
     Optional<Food> updateRatingById(Long id, Integer rating);
+    void deleteById(Long id);
+    void deleteAll();
 }
