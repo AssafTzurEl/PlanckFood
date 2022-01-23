@@ -1,4 +1,4 @@
-package assaf.Planck;
+package com.assaft;
 
 import com.assaft.Food;
 

@@ -1,6 +1,5 @@
-package assaf.Planck;
+package com.assaft;
 
-import com.assaft.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +15,7 @@ import static org.hamcrest.Matchers.startsWith;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest(classes = PlanckFoodApplication.class)
+@SpringBootTest
 @AutoConfigureMockMvc
 public class PlanckFoodApiTests {
 
