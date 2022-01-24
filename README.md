@@ -24,3 +24,6 @@ Use the following branches:
 ## phase-5
 - Unit and integration tests
 - Deletion API, functionality, and integration tests (using TDD)
+
+## phase-6
+- JPA-based H2 DB instead of proprietary in-memory repository
