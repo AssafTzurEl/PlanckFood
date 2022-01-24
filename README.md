@@ -27,3 +27,9 @@ Use the following branches:
 
 ## phase-6
 - JPA-based H2 DB instead of proprietary in-memory repository
+
+## phase-7
+- Postgres instead of H2
+
+## phase-8
+- Logging, MDC
