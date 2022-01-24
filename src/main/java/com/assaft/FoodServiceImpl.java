@@ -8,7 +8,7 @@ import java.util.Optional;
 @Component
 public class FoodServiceImpl implements FoodService {
 
-    public FoodServiceImpl(FoodRepository repository) {
+    public FoodServiceImpl(JpaFoodRepository repository) {
         this.repository = repository;
     }
 
@@ -24,7 +24,7 @@ public class FoodServiceImpl implements FoodService {
             throw new IllegalArgumentException("Invalid food ID: " + id);
         }
 
-        Optional<Food> food = repository.getById(id);
+        Optional<Food> food = repository.findById(id);
 
         if (!food.isPresent()) {
             throw new NotFoundException(id);
@@ -49,7 +49,8 @@ public class FoodServiceImpl implements FoodService {
             throw new IllegalArgumentException("Invalid food ID: " + foodUpdate.getId());
         }
 
-        Optional<Food> updatedFood = repository.updateRatingById(foodUpdate.getId(), foodUpdate.getRating());
+        repository.updateRatingById(foodUpdate.getId(), foodUpdate.getRating());
+        Optional<Food> updatedFood = repository.findById(foodUpdate.getId());
 
         if (!updatedFood.isPresent()) {
             throw new NotFoundException(foodUpdate.getId());
@@ -59,7 +60,8 @@ public class FoodServiceImpl implements FoodService {
 
     @Override
     public void removeById(Long id) {
-        if (repository.getById(id).isPresent()) {
+
+        if (repository.existsById(id)) {
             repository.deleteById(id);
         } else {
             throw new NotFoundException(id);
@@ -71,5 +73,5 @@ public class FoodServiceImpl implements FoodService {
         repository.deleteAll();
     }
 
-    private final FoodRepository repository;
+    private final JpaFoodRepository repository;
 }
