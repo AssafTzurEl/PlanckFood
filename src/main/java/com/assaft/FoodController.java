@@ -1,5 +1,7 @@
 package com.assaft;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,11 +21,14 @@ public class FoodController {
 
     @GetMapping()
     public List<Food> getAll() {
+        logger.info("Request: get all");
+        logger.debug("debug info....");
         return service.findAll();
     }
 
     @GetMapping("/{id}")
     public Food getById(@PathVariable Long id) {
+        logger.info("Request: get by ID #" + id);
         return service.findById(id);
     }
 
@@ -55,6 +60,8 @@ public class FoodController {
     public void deleteAll() {
         service.removeAll();
     }
+
+    Logger logger = LoggerFactory.getLogger(FoodController.class);
 
     private final FoodService service;
 }
